@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test Page</title>
+    <script>
+      function sendData() {
+        const data = document.getElementById("sendMsg").value;
+        console.log(data);
+        window.chrome.webview.postMessage(data);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>WebView2 Test</h1>
+    <p id="getMsg">get message</p>
+    <input type="text" id="sendMsg" />
+    <button onclick="sendData()">send</button>
+  </body>
+</html>
