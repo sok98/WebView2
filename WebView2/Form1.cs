@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,20 @@ namespace WebView2
         public Form1()
         {
             InitializeComponent();
+            Init_webview2();
+        }
+
+        // fixed버전 경로 설정
+        async private void Init_webview2()
+        {
+            string currentPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+            webView2.CreationProperties = new Microsoft.Web.WebView2.WinForms.CoreWebView2CreationProperties
+            {
+                //BrowserExecutableFolder = currentPath + @"\WebView2_Runtime\Microsoft.WebView2.FixedVersionRuntime.103.0.1264.62.x64"
+                BrowserExecutableFolder = @"C:\WebView2_Runtime\Microsoft.WebView2.FixedVersionRuntime.103.0.1264.62.x64"
+            };
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
+            await webView2.EnsureCoreWebView2Async();
         }
 
         private void btn_Send_Click(object sender, EventArgs e)
