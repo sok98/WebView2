@@ -92,7 +92,8 @@ namespace WebView2
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
+            // fixed version 적용 위해 주석처리
+            //((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
